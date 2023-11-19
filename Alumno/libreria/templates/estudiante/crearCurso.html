@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block titulo %} Lista de cursos {% endblock %}
+{% block contenido%}
+<div class="card">
+    <div class="card-header">
+        <a name="" id="" class="btn btn-success" href="{% url 'crearCurso2' %}" role="button">Agregar nuevo curso</a>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Cursos</h4>
+        
+    </div>
+    <div class="card-footer text-muted">
+        <div class="table-responsive">
+            <table class="table table-primary">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Seccion</th>
+                        <th>Sala</th>
+                        <th>Cantidad de evaluaciones</th>
+                        <th>Cantidad de horas</th>
+                        <th>Horario</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for curso in cursos %}
+                    <tr>
+                        <th scope="row">{{curso.id}}</th>
+                        <td>{{curso.nombre}}</td>
+                        <td>{{curso.seccion}}</td>
+                        <td>{{curso.sala}}</td>
+                        <td>{{curso.cantidadEvaluaciones}}</td>
+                        <td>{{curso.cantidadHoras}}</td>
+                        <td>{{curso.horario}}</td>
+                            
+                        <td><a name="" id="" class="btn btn-info" href="{% url 'editarCurso' curso.id %}" role="button">Editar</a>
+                            | 
+                            <a name="" id="" class="btn btn-danger" href="{% url 'eliminarCurso' curso.id %}" role="button">Borrar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}  
